@@ -13,14 +13,15 @@ before_install:
   - docker pull openjdk:11-jre-slim-sid
 
 # git strips the wrapper jar file so we have to force its download during the build
-install:
-  - mvn -N io.takari:maven:wrapper
-  - ./mvnw install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+#install:
+#  - mvn -N io.takari:maven:wrapper
+#  - ./mvnw install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
   
 script:  
   - ./mvnw clean install
   - ./mvnw clean org.jacoco:jacoco-maven-plugin:prepare-agent install
   - ./mvnw deploy jib:build -P deploy-docker
+  - ./mvnw heroku:deploy jib:build -P deploy-heroku,deploy-docker
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
