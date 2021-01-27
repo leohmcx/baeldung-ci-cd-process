@@ -1,6 +1,5 @@
 language: java
 sudo: true
-all_branches: true
 jdk:
   - openjdk11
 
@@ -14,6 +13,7 @@ deploy:
  api-key: 
   secure: $HEROKU_API_KEY
  app: $APP
+ all_branches: true
 
 #script:  
 #  - ./mvnw clean org.jacoco:jacoco-maven-plugin:prepare-agent install
