@@ -12,7 +12,7 @@
 	</parent>
 
 	<groupId>com.api.baeldung</groupId>
-	<artifactId>baeldung-ci-cd-process</artifactId>
+	<artifactId>baeldung-ci-cd-process1</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>baeldung-ci-cd-process</name>
 	<description>Demo project for Spring Boot</description>
@@ -96,6 +96,7 @@
 				<maven.deploy.skip>true</maven.deploy.skip>
 			</properties>
 			<build>
+				<finalName>${project.name}</finalName>
 				<plugins>
 					<plugin>
 						<groupId>com.heroku.sdk</groupId>
@@ -105,7 +106,7 @@
 							<appName>spring-boot-ci-cd</appName>
 							<processTypes>
 								<web>java $JAVA_OPTS -jar -Dserver.port=$PORT
-									target/*.jar</web>
+									target/${project.build.finalName}.jar</web>
 							</processTypes>
 						</configuration>
 					</plugin>
