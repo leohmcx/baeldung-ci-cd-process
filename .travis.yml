@@ -1,5 +1,6 @@
 language: java
 sudo: true
+all_branches: true
 jdk:
   - openjdk11
 
