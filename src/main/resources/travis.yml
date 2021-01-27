@@ -1,4 +1,5 @@
 language: java
+sudo: true
 
 services:
   - docker
@@ -11,5 +12,6 @@ before_install:
   - docker pull openjdk:11-jre-slim-sid
   
 script:
+  - chmod +x mvnw
   - ./mvnw clean install
   - ./mvnw deploy jib:build -P deploy-docker
