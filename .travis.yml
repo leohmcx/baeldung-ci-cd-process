@@ -12,12 +12,6 @@ before_install:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   - docker pull openjdk:11-jre-slim-sid
 
-deploy:
-  provider: heroku
-  api_key:
-    - secure: "$HEROKU_API_KEY"
-  app: "$APP"
-
 # git strips the wrapper jar file so we have to force its download during the build
 install:
   - mvn -N io.takari:maven:wrapper
@@ -27,7 +21,13 @@ script:
   - ./mvnw clean install
   - ./mvnw clean org.jacoco:jacoco-maven-plugin:prepare-agent install
   - ./mvnw deploy jib:build -P deploy-docker
-  - ./mvnw heroku:deploy jib:build -P deploy-heroku,deploy-docker
+#  - ./mvnw heroku:deploy jib:build -P deploy-heroku,deploy-docker
+
+deploy:
+  provider: heroku
+  api_key:
+    - secure: $HEROKU_API_KEY
+  app: $APP
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
