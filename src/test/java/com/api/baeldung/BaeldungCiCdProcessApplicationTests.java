@@ -1,4 +1,4 @@
-package com.api.cooperativa;
+package com.api.baeldung;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
