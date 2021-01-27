@@ -20,7 +20,7 @@ install:
 script:  
   - ./mvnw clean install
   - ./mvnw clean org.jacoco:jacoco-maven-plugin:prepare-agent install
-  - ./mvnw deploy jib:build -P deploy-docker
+#  - ./mvnw deploy jib:build -P deploy-docker
   - ./mvnw heroku:deploy jib:build -P deploy-heroku,deploy-docker
 
 after_success:
