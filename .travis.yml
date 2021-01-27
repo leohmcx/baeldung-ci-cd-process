@@ -14,9 +14,9 @@ deploy:
   secure: $HEROKU_API_KEY
  app: $APP
 
-script:  
-  - ./mvnw clean org.jacoco:jacoco-maven-plugin:prepare-agent install
-  - ./mvnw heroku:deploy jib:build -P deploy-heroku,deploy-docker
+#script:  
+#  - ./mvnw clean org.jacoco:jacoco-maven-plugin:prepare-agent install
+#  - ./mvnw heroku:deploy jib:build -P deploy-heroku,deploy-docker
 
-after_success:
-  - bash <(curl -s https://codecov.io/bash)
+#after_success:
+#  - bash <(curl -s https://codecov.io/bash)
