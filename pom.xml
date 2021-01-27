@@ -12,7 +12,7 @@
 	</parent>
 
 	<groupId>com.api.baeldung</groupId>
-	<artifactId>spring-boot-ci-cd</artifactId>
+	<artifactId>baeldung-ci-cd-process</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>baeldung-ci-cd-process</name>
 	<description>Demo project for Spring Boot</description>
